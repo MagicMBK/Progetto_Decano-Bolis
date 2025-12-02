@@ -76,7 +76,8 @@ Puoi aprirlo direttamente nel browser, non serve un server.
 ```
 /
 ├── index.html      # Gioco completo
-├── preview.png     # Screenshot (opzionale)
+├── assets
+|    └── preview.png # preview del gioco
 └── README.md       # Questo file
 ```
 
