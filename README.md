@@ -3,7 +3,7 @@
 Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**.
 Interfaccia pulita, animazioni fluide e salvataggio automatico dell’high score tramite `localStorage`.
 
-![snake-preview](./preview.png)
+![snake-preview](./assets/preview.png)
 
 ---
 
