@@ -75,10 +75,28 @@ Puoi aprirlo direttamente nel browser, non serve un server.
 
 ```
 /
-├── index.html      # Gioco completo
+├── .gitignore
+├── jsdoc.json                    # Configurazione JSDoc
+├── package-lock.json
+├── package.json
+├── README.md                     # Questo file
+├── struttura.txt                 # Analisi struttura progetto
+│
 ├── assets
-|    └── preview.png # preview del gioco
-└── README.md       # Questo file
+│   └── preview.png               # Immagine anteprima del gioco
+│
+├── docs                          # Documentazione generata da JSDoc
+│
+└── progetto
+    ├── index.html                # Pagina principale del gioco
+    │
+    ├── js
+    │   ├── game.js               # Logica del gioco (classe SnakeGame)
+    │   └── main.js               # Render, input, gestione loop
+    │
+    └── test
+        └── game.test.js          # Test di base (unit test logica)
+
 ```
 
 ---
