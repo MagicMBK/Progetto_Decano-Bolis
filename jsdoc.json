@@ -1,0 +1,11 @@
+{
+  "source": {
+    "include": ["./progetto"]
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "encoding": "utf8",
+    "verbose": true
+  }
+}

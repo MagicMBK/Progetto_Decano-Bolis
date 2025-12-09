@@ -1,0 +1,25 @@
+{
+  "name": "nuova-cartella",
+  "version": "1.0.0",
+  "description": "Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**. Interfaccia pulita, animazioni fluide e salvataggio automatico dell’high score tramite localStorage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MagicMBK/Progetto_Decano-Bolis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MagicMBK/Progetto_Decano-Bolis/issues"
+  },
+  "homepage": "https://github.com/MagicMBK/Progetto_Decano-Bolis#readme",
+  "devDependencies": {
+    "jsdoc": "^4.0.5"
+  }
+}
