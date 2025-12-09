@@ -1,7 +1,8 @@
+// game.js
 export class SnakeGame {
     constructor(config = {}) {
         this.dimensioneGriglia = config.dimensioneGriglia || 20;
-        this.velocitaIniziale = config.velocitaIniziale || 100;
+        this.velocitaIniziale = config.velocitaIniziale || 150;
         this.reset();
     }
 
