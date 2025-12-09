@@ -19,7 +19,7 @@ let highScore = 0;
  */
 let bufferDirezione = [];
 
-highScoreEl.innerText = highScore;
+highScoreEl && (highScoreEl.innerText = highScore);
 
 /**
  * Disegna una singola cella del gioco con angoli arrotondati.
@@ -39,7 +39,6 @@ function disegnaCella(x, y, colore, raggio = 4) {
     const px = x * size + padding;
     const py = y * size + padding;
 
-    // Forma arrotondata (fisicamente necessaria, non ovvia)
     ctx.moveTo(px + raggio, py);
     ctx.lineTo(px + cellSize - raggio, py);
     ctx.quadraticCurveTo(px + cellSize, py, px + cellSize, py + raggio);
@@ -93,7 +92,6 @@ function disegna() {
         disegnaCella(p.x, p.y, color, isHead ? 6 : 3);
 
         if (isHead) {
-            // Occhi: puro effetto visivo
             ctx.fillStyle = "white";
             ctx.beginPath();
             ctx.arc(p.x * 20 + 7, p.y * 20 + 7, 2.5, 0, Math.PI * 2);
@@ -108,10 +106,9 @@ function disegna() {
         }
     });
 
-    scoreEl.innerText = gioco.punteggio;
+    scoreEl && (scoreEl.innerText = gioco.punteggio);
 
     if (inPausa) {
-        // Overlay di pausa (scelta intenzionale: non blocca sottoframe)
         ctx.fillStyle = "rgba(0,0,0,0.6)";
         ctx.fillRect(0, 0, 400, 400);
         ctx.fillStyle = "white";
@@ -126,12 +123,11 @@ function disegna() {
  * Evita automaticamente doppi avvii.
  */
 function avviaTimer() {
-    if (intervallo) return; // Protezione: un solo timer attivo
+    if (intervallo) return;
 
     intervallo = setInterval(() => {
         if (inPausa) return;
 
-        // Direzioni multiple in buffer → evita input simultanei impossibili
         if (bufferDirezione.length > 0) {
             gioco.impostaDirezione(bufferDirezione.shift());
         }
@@ -143,10 +139,9 @@ function avviaTimer() {
             intervallo = null;
             bufferDirezione = [];
 
-            // Aggiornamento high score
             if (gioco.punteggio > highScore) {
                 highScore = gioco.punteggio;
-                highScoreEl.innerText = highScore;
+                highScoreEl && (highScoreEl.innerText = highScore);
             }
 
             msg.innerText = "Game Over! Premi una freccia per ripartire";
@@ -161,7 +156,6 @@ function avviaTimer() {
  * Include WASD come alias delle frecce.
  */
 document.addEventListener("keydown", e => {
-    // Pausa (Space)
     if (e.key === " ") {
         e.preventDefault();
         if (gioco.inCorso) {
@@ -174,35 +168,20 @@ document.addEventListener("keydown", e => {
     let nuovaDir = null;
 
     switch (e.key) {
-        case "ArrowUp": case "w": case "W":
-            e.preventDefault();
-            nuovaDir = { x: 0, y: -1 };
-            break;
-        case "ArrowDown": case "s": case "S":
-            e.preventDefault();
-            nuovaDir = { x: 0, y: 1 };
-            break;
-        case "ArrowLeft": case "a": case "A":
-            e.preventDefault();
-            nuovaDir = { x: -1, y: 0 };
-            break;
-        case "ArrowRight": case "d": case "D":
-            e.preventDefault();
-            nuovaDir = { x: 1, y: 0 };
-            break;
+        case "ArrowUp": case "w": case "W": nuovaDir = { x: 0, y: -1 }; break;
+        case "ArrowDown": case "s": case "S": nuovaDir = { x: 0, y: 1 }; break;
+        case "ArrowLeft": case "a": case "A": nuovaDir = { x: -1, y: 0 }; break;
+        case "ArrowRight": case "d": case "D": nuovaDir = { x: 1, y: 0 }; break;
     }
 
     if (nuovaDir) {
-        // Primo input dopo game over → reset
         if (!gioco.inCorso) {
             gioco.reset();
-            bufferDirezione = [];
+            bufferDirezione = [nuovaDir]; // Prima direzione nel buffer
             msg.innerText = "";
-            gioco.impostaDirezione(nuovaDir);
+            inPausa = false;
             avviaTimer();
-        }
-        // Max 2 direzioni in buffer → evita queue infinita
-        else if (bufferDirezione.length < 2) {
+        } else if (bufferDirezione.length < 2) {
             bufferDirezione.push(nuovaDir);
         }
     }

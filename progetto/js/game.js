@@ -1,5 +1,3 @@
-// game.js
-
 /**
  * Gestisce la logica del gioco Snake (stato, movimento, collisioni)
  */
@@ -39,13 +37,11 @@ export class SnakeGame {
     impostaDirezione(dir) {
         if (!dir) return;
 
-        // Impedisce di invertire la direzione
         if (this.direzione.x !== 0 && dir.x === -this.direzione.x) return;
         if (this.direzione.y !== 0 && dir.y === -this.direzione.y) return;
 
         this.direzione = dir;
 
-        // Avvia il gioco al primo movimento
         if (dir.x !== 0 || dir.y !== 0) this.inCorso = true;
     }
 
@@ -78,7 +74,6 @@ export class SnakeGame {
             y: this.serpente[0].y + this.direzione.y
         };
 
-        // Collisione con muri o corpo
         const collisione =
             testa.x < 0 ||
             testa.x >= this.dimensioneGriglia ||
@@ -91,17 +86,14 @@ export class SnakeGame {
             return { morto: true, mangiato: false };
         }
 
-        // Avanza
         this.serpente.unshift(testa);
 
-        // Controlla se ha mangiato
         if (testa.x === this.cibo.x && testa.y === this.cibo.y) {
             this.punteggio++;
             this.posizionaCibo();
             return { morto: false, mangiato: true };
         }
 
-        // Muove eliminando la coda
         this.serpente.pop();
         return { morto: false, mangiato: false };
     }
