@@ -16,6 +16,7 @@
  */
 
 import { SnakeGame } from "./game.js";
+import { ThemeManager } from "./darkMode.js";
 
 // ============================================================================
 // RIFERIMENTI AGLI ELEMENTI DOM
@@ -135,6 +136,13 @@ const CELL_PADDING = 1;
  * @default 400
  */
 const CANVAS_SIZE = 400;
+
+/**
+ * Gestore del tema dell'applicazione
+ * @type {ThemeManager}
+ * @const
+ */
+const themeManager = new ThemeManager();
 
 // ============================================================================
 // FUNZIONI DI RENDERING

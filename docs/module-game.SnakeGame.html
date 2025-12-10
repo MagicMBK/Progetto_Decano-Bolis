@@ -31,15 +31,8 @@
         <h2><span class="attribs"><span class="type-signature"></span></span>
             <span class="ancestors"><a href="module-game.html">game</a>.</span>SnakeGame<span class="signature">(config<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Classe principale che gestisce tutta la logica del gioco Snake.
-
-Responsabilità:
-- Gestione dello stato del gioco (serpente, cibo, punteggio)
-- Validazione e applicazione dei movimenti
-- Rilevamento delle collisioni
-- Generazione casuale del cibo
-- Calcolo del punteggio</div>
-      <!--  -->
+            <div class="class-description">Classe principale che gestisce tutta la logica del gioco Snake.Responsabilità:- Gestione dello stato del gioco (serpente, cibo, punteggio)- Validazione e applicazione dei movimenti- Rilevamento delle collisioni- Generazione casuale del cibo- Calcolo del punteggio</div>
+        
     
 </header>
 
@@ -61,8 +54,7 @@ Responsabilità:
 
 
 <div class="description">
-    Il costruttore inizializza il gioco con i parametri forniti o con i valori predefiniti.
-Chiama automaticamente il metodo reset() per impostare lo stato iniziale.
+    Il costruttore inizializza il gioco con i parametri forniti o con i valori predefiniti.Chiama automaticamente il metodo reset() per impostare lo stato iniziale.
 </div>
 
 
@@ -314,21 +306,9 @@ Chiama automaticamente il metodo reset() per impostare lo stato iniziale.
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Creare un gioco con configurazione predefinita
-const gioco = new SnakeGame();</code></pre>
+    <pre class="prettyprint"><code>// Creare un gioco con configurazione predefinitaconst gioco = new SnakeGame();</code></pre>
 
-    <pre class="prettyprint"><code>// Creare un gioco con configurazione personalizzata
-const gioco = new SnakeGame({
-  dimensioneGriglia: 30,
-  velocitaIniziale: 100
-});
-
-// Impostare direzione e aggiornare
-gioco.impostaDirezione({ x: 1, y: 0 });
-const risultato = gioco.aggiorna();
-if (risultato.morto) {
-  console.log("Game Over!");
-}</code></pre>
+    <pre class="prettyprint"><code>// Creare un gioco con configurazione personalizzataconst gioco = new SnakeGame({  dimensioneGriglia: 30,  velocitaIniziale: 100});// Impostare direzione e aggiornaregioco.impostaDirezione({ x: 1, y: 0 });const risultato = gioco.aggiorna();if (risultato.morto) {  console.log("Game Over!");}</code></pre>
 
 
 
@@ -507,11 +487,7 @@ if (risultato.morto) {
 
 
 <div class="description">
-    - {x:0, y:0} = fermo (stato iniziale)
-- {x:1, y:0} = destra
-- {x:-1, y:0} = sinistra
-- {x:0, y:1} = giù
-- {x:0, y:-1} = su
+    - {x:0, y:0} = fermo (stato iniziale)- {x:1, y:0} = destra- {x:-1, y:0} = sinistra- {x:0, y:1} = giù- {x:0, y:-1} = su
 </div>
 
 
@@ -588,9 +564,7 @@ if (risultato.morto) {
 
 
 <div class="description">
-    Indica se il gioco è attualmente in corso.
-Diventa true quando il giocatore fa la prima mossa.
-Diventa false in caso di collisione (Game Over).
+    Indica se il gioco è attualmente in corso.Diventa true quando il giocatore fa la prima mossa.Diventa false in caso di collisione (Game Over).
 </div>
 
 
@@ -667,8 +641,7 @@ Diventa false in caso di collisione (Game Over).
 
 
 <div class="description">
-    Punteggio attuale del giocatore.
-Incrementa di 1 ogni volta che il serpente mangia il cibo.
+    Punteggio attuale del giocatore.Incrementa di 1 ogni volta che il serpente mangia il cibo.
 </div>
 
 
@@ -745,8 +718,7 @@ Incrementa di 1 ogni volta che il serpente mangia il cibo.
 
 
 <div class="description">
-    La lunghezza dell'array determina la lunghezza del serpente.
-Il serpente cresce quando mangia il cibo (non viene rimossa la coda).
+    La lunghezza dell'array determina la lunghezza del serpente.Il serpente cresce quando mangia il cibo (non viene rimossa la coda).
 </div>
 
 
@@ -818,8 +790,7 @@ Il serpente cresce quando mangia il cibo (non viene rimossa la coda).
 
 
 <div class="description">
-    Velocità corrente del gioco in millisecondi.
-Può essere diminuita durante il gioco per aumentare la difficoltà.
+    Velocità corrente del gioco in millisecondi.Può essere diminuita durante il gioco per aumentare la difficoltà.
 </div>
 
 
@@ -891,8 +862,7 @@ Può essere diminuita durante il gioco per aumentare la difficoltà.
 
 
 <div class="description">
-    Intervallo iniziale in millisecondi tra un aggiornamento e l'altro.
-Può essere modificato durante il gioco per aumentare la difficoltà.
+    Intervallo iniziale in millisecondi tra un aggiornamento e l'altro.Può essere modificato durante il gioco per aumentare la difficoltà.
 </div>
 
 
@@ -981,18 +951,7 @@ Può essere modificato durante il gioco per aumentare la difficoltà.
 
 
 <div class="description">
-    Questa è la funzione principale del game loop. Esegue le seguenti operazioni:
-
-1. Se il gioco non è in corso, ritorna immediatamente senza fare nulla
-2. Calcola la nuova posizione della testa in base alla direzione corrente
-3. Controlla se c'è una collisione con:
-   - I bordi della griglia
-   - Il corpo del serpente stesso
-4. Se c'è collisione, ferma il gioco e ritorna {morto: true, mangiato: false}
-5. Aggiunge la nuova testa al serpente
-6. Controlla se la testa è sulla posizione del cibo:
-   - Se sì: incrementa il punteggio, genera nuovo cibo, ritorna {morto: false, mangiato: true}
-   - Se no: rimuove la coda (il serpente si muove ma non cresce), ritorna {morto: false, mangiato: false}
+    Questa è la funzione principale del game loop. Esegue le seguenti operazioni:1. Se il gioco non è in corso, ritorna immediatamente senza fare nulla2. Calcola la nuova posizione della testa in base alla direzione corrente3. Controlla se c'è una collisione con:   - I bordi della griglia   - Il corpo del serpente stesso4. Se c'è collisione, ferma il gioco e ritorna {morto: true, mangiato: false}5. Aggiunge la nuova testa al serpente6. Controlla se la testa è sulla posizione del cibo:   - Se sì: incrementa il punteggio, genera nuovo cibo, ritorna {morto: false, mangiato: true}   - Se no: rimuove la coda (il serpente si muove ma non cresce), ritorna {morto: false, mangiato: false}
 </div>
 
 
@@ -1089,22 +1048,7 @@ Può essere modificato durante il gioco per aumentare la difficoltà.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Esempio di utilizzo nel game loop
-setInterval(() => {
-  const esito = gioco.aggiorna();
-  
-  if (esito.morto) {
-    console.log("Game Over!");
-    // Fermare il timer, mostrare schermata Game Over
-  }
-  
-  if (esito.mangiato) {
-    console.log("Cibo mangiato! Punteggio:", gioco.punteggio);
-    // Riprodurre suono, aumentare velocità, ecc.
-  }
-  
-  ridisegnaGioco();
-}, gioco.velocita);</code></pre>
+    <pre class="prettyprint"><code>// Esempio di utilizzo nel game loopsetInterval(() => {  const esito = gioco.aggiorna();    if (esito.morto) {    console.log("Game Over!");    // Fermare il timer, mostrare schermata Game Over  }    if (esito.mangiato) {    console.log("Cibo mangiato! Punteggio:", gioco.punteggio);    // Riprodurre suono, aumentare velocità, ecc.  }    ridisegnaGioco();}, gioco.velocita);</code></pre>
 
 
 
@@ -1122,12 +1066,7 @@ setInterval(() => {
 
 
 <div class="description">
-    Questa funzione implementa la logica di prevenzione dell'inversione a 180°:
-il serpente non può invertire completamente la direzione in un solo frame
-(es. se va a destra non può andare immediatamente a sinistra).
-
-Il gioco viene avviato (inCorso = true) quando viene impostata la prima
-direzione diversa da {x:0, y:0}.
+    Questa funzione implementa la logica di prevenzione dell'inversione a 180°:il serpente non può invertire completamente la direzione in un solo frame(es. se va a destra non può andare immediatamente a sinistra).Il gioco viene avviato (inCorso = true) quando viene impostata la primadirezione diversa da {x:0, y:0}.
 </div>
 
 
@@ -1269,13 +1208,9 @@ direzione diversa da {x:0, y:0}.
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Tentativo di movimento valido
-gioco.direzione = { x: 1, y: 0 }; // destra
-gioco.impostaDirezione({ x: 0, y: 1 }); // giù - OK</code></pre>
+    <pre class="prettyprint"><code>// Tentativo di movimento validogioco.direzione = { x: 1, y: 0 }; // destragioco.impostaDirezione({ x: 0, y: 1 }); // giù - OK</code></pre>
 
-    <pre class="prettyprint"><code>// Tentativo di inversione (ignorato)
-gioco.direzione = { x: 1, y: 0 }; // destra
-gioco.impostaDirezione({ x: -1, y: 0 }); // sinistra - IGNORATO</code></pre>
+    <pre class="prettyprint"><code>// Tentativo di inversione (ignorato)gioco.direzione = { x: 1, y: 0 }; // destragioco.impostaDirezione({ x: -1, y: 0 }); // sinistra - IGNORATO</code></pre>
 
 
 
@@ -1293,10 +1228,7 @@ gioco.impostaDirezione({ x: -1, y: 0 }); // sinistra - IGNORATO</code></pre>
 
 
 <div class="description">
-    Questa funzione usa un ciclo do-while per generare posizioni casuali finché
-non ne trova una che non sia occupata dal corpo del serpente.
-
-La posizione generata viene salvata nella proprietà this.cibo.
+    Questa funzione usa un ciclo do-while per generare posizioni casuali finchénon ne trova una che non sia occupata dal corpo del serpente.La posizione generata viene salvata nella proprietà this.cibo.
 </div>
 
 
@@ -1393,9 +1325,7 @@ La posizione generata viene salvata nella proprietà this.cibo.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Generare una nuova posizione per il cibo
-const nuovaPosizione = gioco.posizionaCibo();
-console.log(`Cibo a x:${nuovaPosizione.x}, y:${nuovaPosizione.y}`);</code></pre>
+    <pre class="prettyprint"><code>// Generare una nuova posizione per il ciboconst nuovaPosizione = gioco.posizionaCibo();console.log(`Cibo a x:${nuovaPosizione.x}, y:${nuovaPosizione.y}`);</code></pre>
 
 
 
@@ -1413,13 +1343,7 @@ console.log(`Cibo a x:${nuovaPosizione.x}, y:${nuovaPosizione.y}`);</code></pre>
 
 
 <div class="description">
-    Questo metodo:
-- Posiziona il serpente al centro della griglia con lunghezza 1
-- Imposta la direzione a {x:0, y:0} (fermo)
-- Azzera il punteggio
-- Ripristina la velocità iniziale
-- Imposta inCorso a false (il gioco non è ancora iniziato)
-- Genera una nuova posizione per il cibo
+    Questo metodo:- Posiziona il serpente al centro della griglia con lunghezza 1- Imposta la direzione a {x:0, y:0} (fermo)- Azzera il punteggio- Ripristina la velocità iniziale- Imposta inCorso a false (il gioco non è ancora iniziato)- Genera una nuova posizione per il cibo
 </div>
 
 
@@ -1512,10 +1436,7 @@ console.log(`Cibo a x:${nuovaPosizione.x}, y:${nuovaPosizione.y}`);</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Resettare il gioco dopo un Game Over
-if (risultato.morto) {
-  gioco.reset();
-}</code></pre>
+    <pre class="prettyprint"><code>// Resettare il gioco dopo un Game Overif (risultato.morto) {  gioco.reset();}</code></pre>
 
 
 
@@ -1535,13 +1456,13 @@ if (risultato.morto) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li></ul><h3>Classes</h3><ul><li><a href="module-game.SnakeGame.html">SnakeGame</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Tue Dec 09 2025 20:57:31 GMT+0100 (Ora standard dell’Europa centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Wed Dec 10 2025 15:54:10 GMT+0100 (Ora standard dell’Europa centrale)
 </footer>
 
 <script> prettyPrint(); </script>
