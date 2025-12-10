@@ -4,7 +4,7 @@
   "description": "Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**. Interfaccia pulita, animazioni fluide e salvataggio automatico dell�high score tramite localStorage.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "doc": "jsdoc -c jsdoc.json",
     "docs": "jsdoc -c jsdoc.json",
     "docs:watch": "nodemon --watch ./ --ext js --exec npm run docs"
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/MagicMBK/Progetto_Decano-Bolis#readme",
   "devDependencies": {
+    "jest": "^30.2.0",
     "jsdoc": "^4.0.5"
   },
   "directories": {
