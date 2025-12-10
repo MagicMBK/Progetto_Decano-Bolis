@@ -58,7 +58,7 @@ git clone https://github.com/tuo-username/snake-game.git
 Entra nella cartella:
 
 ```bash
-cd snake-game
+cd progetto
 ```
 
 Apri il file:
@@ -67,7 +67,7 @@ Apri il file:
 index.html
 ```
 
-Puoi aprirlo direttamente nel browser, non serve un server.
+E' necessario l'utilizzo di Live Server per il corretto funzionamento.
 
 ---
 
