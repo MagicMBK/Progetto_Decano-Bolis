@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🐍 Snake Game</title>
     <link rel="stylesheet" href="styles-skin.css">
@@ -12,6 +13,51 @@
     <div class="score-container">
         Score: <span id="scoreVal">0</span> | 
         High Score: <span id="highScoreVal">0</span>
+=======
+    <title>Snake Game</title>
+
+    <!-- Import CSS utility framework -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body { background: #f0f9ff; }
+        canvas { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        
+        #scoreVal, #highScoreVal {
+        font-size: 36px !important;
+        font-weight: bold !important;
+        color: #10b981 !important;
+        font-family: 'Courier New', monospace !important;
+        }
+
+        #scoreVal, #highScoreVal {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            color: #10b981;
+        }
+
+        .mt-2.flex.gap-4 p {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 15px;
+        }
+    </style>
+    <link rel="stylesheet" href="styles-dark.css">
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen">
+    
+    <h1 class="text-4xl mb-4 font-bold">🐍 Snake</h1>
+    <button id="themeToggle" class="theme-toggle">🌙</button>
+    
+    
+    
+    <!-- Punteggio -->
+    <div class="mt-2 flex gap-4">
+        <p>Punteggio: <span id="scoreVal">0</span></p>
+        <p>High Score: <span id="highScoreVal">0</span></p>
+>>>>>>> feature_dark_mode
     </div>
     
     <div class="skin-selector">

@@ -5,7 +5,11 @@
  */
 
 import { SnakeGame } from "./game.js";
+<<<<<<< HEAD
 import { SkinManager } from "./skin.js";
+=======
+import { ThemeManager } from "./darkMode.js";
+>>>>>>> feature_dark_mode
 
 // ============================================================================
 // RIFERIMENTI AGLI ELEMENTI DOM
@@ -40,6 +44,13 @@ highScoreEl.innerText = highScore;
 const CELL_SIZE = 20;
 const CELL_PADDING = 1;
 const CANVAS_SIZE = 400;
+
+/**
+ * Gestore del tema dell'applicazione
+ * @type {ThemeManager}
+ * @const
+ */
+const themeManager = new ThemeManager();
 
 // ============================================================================
 // SKIN UI
