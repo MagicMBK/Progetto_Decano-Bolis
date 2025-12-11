@@ -1,75 +1,54 @@
-🐍 Feature: Nuova Skin RGB per il Serpente
+# 🐍 Feature: Nuova Skin RGB per il Serpente
 
-Questo branch introduce una nuova personalizzazione grafica per il serpente nel gioco Snake, aggiungendo una skin dinamica basata su colori Rosso, Verde e Blu (RGB).
+Questo branch introduce una nuova personalizzazione grafica per il serpente nel gioco **Snake**, aggiungendo una skin basata su colori **Rosso, Verde e Blu (RGB)**.
 
-🎯 Obiettivo della Feature
+---
 
-Migliorare l’estetica del serpente rendendolo più moderno e visivamente gradevole.
+## 🎯 Obiettivo della Feature
+
+Migliorare l’estetica del serpente rendendolo più moderno e visivamente gradevole.  
 La nuova skin RGB:
 
-applica tre varianti di colore: red, green, blue
+- applica tre varianti di colore: **rosso**, **verde**, **blu**
+- mantiene la distinzione chiara tra testa e corpo
+- non modifica la logica o le meccaniche del gioco
 
-può essere configurata facilmente nel codice
+---
 
-mantiene la distinzione della testa del serpente
+## 🛠️ Modifiche Apportate
 
-non altera la logica di gioco
+### ✔️ 1. Rendering aggiornato
+Il sistema di disegno del serpente in `main.js` è stato modificato per applicare i colori RGB in base alla skin selezionata.
 
-🛠️ Modifiche Apportate
-✔️ 1. Aggiornamento della funzione di disegno
+### ✔️ 2. Skin configurabile
+Aggiunta una proprietà/variabile che permette di selezionare la skin attiva:
 
-Il rendering del serpente è stato modificato per applicare una palette RGB ciclica o selezionabile.
+- `"red"`
+- `"green"`
+- `"blue"`
 
-✔️ 2. Introduzione di un selettore colore (opzionale)
+### ✔️ 3. Nessun impatto sulla logica
+La feature è puramente grafica:  
+non sono stati modificati movimento, collisioni, punteggio o comportamento del gioco.
 
-Aggiunta una proprietà/variabile per selezionare la skin attiva:
+---
 
-"red"
+## 📁 File Modificati
 
-"green"
+js/main.js → aggiornato rendering serpente (colore RGB)
+js/game.js → nessuna modifica funzionale
+index.html → (eventuale) aggiunta selettore skin
 
-"blue"
 
-✔️ 3. Nessuna modifica alla logica di gioco
+---
 
-La feature è completamente isolata alla parte grafica/rendering, senza influire su:
+## 🧪 Testing
 
-movimento
+Verificato che:
 
-punteggio
+- la testa del serpente resta distinguibile
+- il corpo cambia colore correttamente secondo la skin scelta
+- tutte le skin risultano ben visibili sulla griglia
+- nessun effetto collaterale al gameplay
 
-collisioni
-
-velocità
-
-📁 File Modificati
-js/main.js     → aggiornato il rendering del serpente
-js/game.js     → nessuna modifica alla logica
-index.html     → (eventuale) aggiunta opzione selezione skin
-
-🧪 Testing
-
-È stato verificato che:
-
-il serpente mantiene la forma corretta
-
-la testa rimane distinguibile anche con la skin RGB
-
-nessun impatto su collisioni e logica interna
-
-il colore del cibo rimane invariato
-
-il gradiente visivo funziona correttamente con le nuove palette
-
-📝 Note
-
-Questa feature è pensata per essere estendibile.
-In futuro sarà possibile aggiungere:
-
-skin animate
-
-skin sbloccabili
-
-skin basate sul punteggio
-
-skin selezionabili dal giocatore
+---
