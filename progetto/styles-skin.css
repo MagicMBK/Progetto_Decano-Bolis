@@ -1,0 +1,102 @@
+/* ============================================
+   VARIABILI CSS BASE
+   ============================================ */
+:root {
+    --cell-head: #10b981;
+    --cell-body: rgba(16, 185, 129, 0.6);
+    --food-color: #ef4444;
+    --bg-color: #1a1a2e;
+    --text-color: #ffffff;
+}
+
+/* ============================================
+   SKIN: GREEN (default)
+   ============================================ */
+.body-skin-green {
+    --cell-head: #10b981;
+    --cell-body: rgba(16, 185, 129, 0.6);
+    --food-color: #ef4444;
+}
+
+/* ============================================
+   SKIN: RED
+   ============================================ */
+.body-skin-red {
+    --cell-head: #ef4444;
+    --cell-body: rgba(239, 68, 68, 0.6);
+    --food-color: #fbbf24;
+}
+
+/* ============================================
+   SKIN: BLUE
+   ============================================ */
+.body-skin-blue {
+    --cell-head: #3b82f6;
+    --cell-body: rgba(59, 130, 246, 0.6);
+    --food-color: #f472b6;
+}
+
+/* ============================================
+   STILI GENERALI
+   ============================================ */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+canvas {
+    border: 3px solid var(--cell-head);
+    border-radius: 8px;
+    background: #0f0f23;
+    display: block;
+    margin: 20px auto;
+}
+
+/* ============================================
+   PULSANTI SKIN
+   ============================================ */
+.skinCube {
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.2s;
+}
+
+.skinCube:hover:not(:disabled) {
+    transform: scale(1.1);
+}
+
+.skinCube:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.skinCube.selected {
+    border-color: white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.skinCube[data-skin="green"] { background: #10b981; }
+.skinCube[data-skin="red"] { background: #ef4444; }
+.skinCube[data-skin="blue"] { background: #3b82f6; }
+
+/* ============================================
+   SCORE
+   ============================================ */
+.score-container {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+#msg {
+    font-size: 16px;
+    min-height: 24px;
+    color: #fbbf24;
+}

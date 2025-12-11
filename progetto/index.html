@@ -2,33 +2,31 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Snake Game</title>
-
-    <!-- Import CSS utility framework -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <style>
-        body { background: #f0f9ff; }
-        canvas { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 Snake Game</title>
+    <link rel="stylesheet" href="styles-skin.css">
 </head>
-
-<body class="flex flex-col items-center justify-center min-h-screen">
-    <h1 class="text-4xl mb-4 font-bold">Snake</h1>
-    <!-- Punteggio -->
-    <div class="mt-2 flex gap-4">
-        <p>Punteggio: <span id="scoreVal">0</span></p>
-        <p>High Score: <span id="highScoreVal">0</span></p>
+<body class="body-skin-green">
+    <h1>🐍 Snake Game</h1>
+    
+    <div class="score-container">
+        Score: <span id="scoreVal">0</span> | 
+        High Score: <span id="highScoreVal">0</span>
     </div>
+    
+    <div class="skin-selector">
+        <p>Scegli Skin:</p>
+        <button class="skinCube" data-skin="green"></button>
+        <button class="skinCube" data-skin="red"></button>
+        <button class="skinCube" data-skin="blue"></button>
+    </div>
+    
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    
+    <p id="msg">Premi una freccia per iniziare</p>
+    
 
-
-    <!-- Area di rendering del gioco -->
-    <canvas id="gameCanvas" width="400" height="400" class="bg-white rounded border"></canvas>
-
-    <!-- Messaggio di stato -->
-    <p id="msg" class="mt-4 text-slate-500">Premi una freccia per iniziare</p>
-
-    <!-- Logica principale del gioco -->
-    <script type="module" src="./js/main.js"></script>
+    
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
