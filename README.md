@@ -1,132 +1,103 @@
 # 🐍 Snake Game – Modern Web Version
 
-Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**.
+Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**.  
 Interfaccia pulita, animazioni fluide e salvataggio automatico dell’high score tramite `localStorage`.
 
 ![snake-preview](./assets/preview.png)
 
 ---
 
-## 🚀 Caratteristiche
+## 🚀 Caratteristiche principali
 
 * 🎨 **UI moderna** con Tailwind CSS
-* 🐍 **Movimento fluido** e collisioni precise
-* 🍎 **Cibo random** sempre generato fuori dal corpo del serpente
+* 🐍 **Movimento fluido** con collisioni precise
+* 🍎 **Cibo generato casualmente** sempre fuori dal corpo del serpente
 * ⚡ **Velocità progressiva** ad ogni punto
 * 💾 **High Score salvato** localmente
-* 📱 **Controlli touch** integrati per smartphone
+* 📱 **Controlli touch** per smartphone
 * 🖥️ **Canvas 400×400** con griglia elegante
-* 🔄 **Restart immediato** con i tasti freccia
+* 🔄 **Restart immediato** usando le frecce direzionali
+* 📝 **Documentazione con JSDoc** per la logica di gioco
+* ✅ **Unit test** con Jest per le funzioni principali
 
 ---
 
 ## 📦 Tecnologie utilizzate
 
 * **HTML5 Canvas**
-* **JavaScript (ES6)**
-* **TailwindCSS CDN**
+* **JavaScript (ES6 Modules)**
+* **Tailwind CSS**
 * **LocalStorage API**
-* Zero dipendenze aggiuntive.
+* **Jest** per unit test
+* **JSDoc** per documentazione
 
 ---
 
 ## ▶️ Come giocare
 
 ### Desktop
-
-* Usa le **frecce direzionali** per muovere il serpente.
-* Evita i bordi e il tuo stesso corpo.
+* Usa le **frecce direzionali** o `W/A/S/D` per muovere il serpente.
+* Evita bordi e collisioni con il corpo.
 
 ### Mobile
-
-* Tocca i pulsanti direzionali **sotto il canvas**.
+* Tocca i pulsanti direzionali sotto il canvas.
 
 ### Obiettivo
-
-Mangia le mele rosse (🍎) per crescere e aumentare il punteggio!
+* Mangia le mele rosse (🍎) per far crescere il serpente e aumentare il punteggio.
+* Evita collisioni e bordi per non perdere la partita.
 
 ---
 
 ## 🛠️ Installazione & Avvio
 
-Clona il repository:
+1. Clona il repository:
 
 ```bash
-git clone https://github.com/tuo-username/snake-game.git
-```
+git clone https://github.com/MagicMBK/Progetto_Decano-Bolis.git
 
-Entra nella cartella:
+    Entra nella cartella del progetto:
 
-```bash
-cd progetto
-```
+cd Progetto_Decano-Bolis/progetto
 
-Apri il file:
+    Apri index.html in un browser moderno.
+    (Consigliato usare Live Server per sviluppo attivo.)
 
-```
-index.html
-```
+📁 Struttura del progetto
 
-E' necessario l'utilizzo di Live Server per il corretto funzionamento.
-
----
-
-## 📁 Struttura del progetto
-
-```
 /
 ├── .gitignore
 ├── jsdoc.json                    # Configurazione JSDoc
 ├── package-lock.json
 ├── package.json
 ├── README.md                     # Questo file
-├── struttura.txt                 # Analisi struttura progetto
-│
 ├── assets
-│   └── preview.png               # Immagine anteprima del gioco
-│
-├── docs                          # Documentazione generata da JSDoc
-│
+│   └── preview.png               # Anteprima del gioco
+├── docs                          # Documentazione generata con JSDoc
 └── progetto
-    ├── index.html                # Pagina principale del gioco
-    │
+    ├── index.html                # Pagina principale
     ├── js
     │   ├── game.js               # Logica del gioco (classe SnakeGame)
-    │   └── main.js               # Render, input, gestione loop
-    │
+    │   └── main.js               # Rendering, input, loop
     └── test
-        └── game.test.js          # Test di base (unit test logica)
+        └── game.test.js          # Unit test base
 
-```
-
----
-
-## 🧩 Personalizzazione
+🧩 Personalizzazione
 
 Puoi modificare facilmente:
 
-* 🎨 **Colori del serpente** → nelle funzioni drawRect
-* 📏 **Dimensione griglia** → `gridSize`
-* 🏁 **Velocità iniziale** → variabile `speed`
-* 🔊 **Suoni** → aggiungendo audio check al gameplay
-* 🟦 **Dimensioni canvas** → attributi `width` e `height`
+    🎨 Colori del serpente → nella funzione disegnaCella di main.js
 
-Se vuoi, posso generarti **una versione con skin**, effetti glow, suoni o difficoltà multiple.
+    📏 Dimensione griglia → dimensioneGriglia in SnakeGame
 
----
+    🏁 Velocità iniziale → velocitaIniziale in SnakeGame
 
-## 🤝 Contribuire
+    🔊 Suoni → aggiungendo audio al gameplay
 
-Pull request, issue e suggerimenti sono benvenuti!
+    🟦 Dimensioni canvas → attributi width e height in index.html
 
----
+📜 Licenza
 
-## 📜 Licenza
+Rilasciato sotto MIT License – libero per usi personali e commerciali.
+⭐ Supporta il progetto
 
-Rilasciato sotto licenza **MIT** – libero per usi personali e commerciali.
-
----
-
-## ⭐ Supporta il progetto
-
-Se ti piace, lascia una **star ⭐** sul repository!
+Se ti piace, lascia una star ⭐ sul repository!
