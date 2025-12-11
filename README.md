@@ -61,7 +61,8 @@ Entra nella cartella del progetto:
 cd Progetto_Decano-Bolis/progetto
 ```
 
-Apri `index.html` in un browser moderno usando Live Server.
+### Apri `index.html` in un browser moderno usando Live Server.
+
 ---
 
 ## 📁 Struttura del progetto
