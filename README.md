@@ -1,6 +1,6 @@
 # 🐍 Snake Game – Modern Web Version
 
-Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**.  
+Un **gioco Snake moderno**, elegante e responsive, realizzato in **HTML, CSS (Tailwind)** e **JavaScript**.
 Interfaccia pulita, animazioni fluide e salvataggio automatico dell’high score tramite `localStorage`.
 
 ![snake-preview](./assets/preview.png)
@@ -36,13 +36,12 @@ Interfaccia pulita, animazioni fluide e salvataggio automatico dell’high score
 ## ▶️ Come giocare
 
 ### Desktop
+
 * Usa le **frecce direzionali** o `W/A/S/D` per muovere il serpente.
 * Evita bordi e collisioni con il corpo.
 
-### Mobile
-* Tocca i pulsanti direzionali sotto il canvas.
-
 ### Obiettivo
+
 * Mangia le mele rosse (🍎) per far crescere il serpente e aumentare il punteggio.
 * Evita collisioni e bordi per non perdere la partita.
 
@@ -50,20 +49,26 @@ Interfaccia pulita, animazioni fluide e salvataggio automatico dell’high score
 
 ## 🛠️ Installazione & Avvio
 
-1. Clona il repository:
+Clona il repository:
 
 ```bash
 git clone https://github.com/MagicMBK/Progetto_Decano-Bolis.git
+```
 
-    Entra nella cartella del progetto:
+Entra nella cartella del progetto:
 
+```bash
 cd Progetto_Decano-Bolis/progetto
+```
 
-    Apri index.html in un browser moderno.
-    (Consigliato usare Live Server per sviluppo attivo.)
+Apri `index.html` in un browser moderno.
+*(Consigliato usare Live Server per sviluppo attivo.)*
 
-📁 Struttura del progetto
+---
 
+## 📁 Struttura del progetto
+
+```
 /
 ├── .gitignore
 ├── jsdoc.json                    # Configurazione JSDoc
@@ -80,24 +85,28 @@ cd Progetto_Decano-Bolis/progetto
     │   └── main.js               # Rendering, input, loop
     └── test
         └── game.test.js          # Unit test base
+```
 
-🧩 Personalizzazione
+---
+
+## 🧩 Personalizzazione
 
 Puoi modificare facilmente:
 
-    🎨 Colori del serpente → nella funzione disegnaCella di main.js
+* 🎨 **Colori del serpente** → nella funzione `disegnaCella` di `main.js`
+* 📏 **Dimensione griglia** → `dimensioneGriglia` in `SnakeGame`
+* 🏁 **Velocità iniziale** → `velocitaIniziale` in `SnakeGame`
+* 🔊 **Suoni** → aggiungendo audio al gameplay
+* 🟦 **Dimensioni canvas** → attributi `width` e `height` in `index.html`
 
-    📏 Dimensione griglia → dimensioneGriglia in SnakeGame
+---
 
-    🏁 Velocità iniziale → velocitaIniziale in SnakeGame
+## 📜 Licenza
 
-    🔊 Suoni → aggiungendo audio al gameplay
+Rilasciato sotto **MIT License** – libero per usi personali e commerciali.
 
-    🟦 Dimensioni canvas → attributi width e height in index.html
+---
 
-📜 Licenza
+## ⭐ Supporta il progetto
 
-Rilasciato sotto MIT License – libero per usi personali e commerciali.
-⭐ Supporta il progetto
-
-Se ti piace, lascia una star ⭐ sul repository!
+Se ti piace, lascia una **star ⭐** sul repository!
