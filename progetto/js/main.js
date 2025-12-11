@@ -5,11 +5,8 @@
  */
 
 import { SnakeGame } from "./game.js";
-<<<<<<< HEAD
 import { SkinManager } from "./skin.js";
-=======
 import { ThemeManager } from "./darkMode.js";
->>>>>>> feature_dark_mode
 
 // ============================================================================
 // RIFERIMENTI AGLI ELEMENTI DOM
@@ -28,7 +25,7 @@ const skinCubes = document.querySelectorAll(".skinCube");
 
 const gioco = new SnakeGame();
 const skinManager = new SkinManager(document.body);
-// RIMOSSO: const themeManager = new ThemeManager(); ← QUESTA ERA LA RIGA CHE ROMPEVA TUTTO
+const themeManager = new ThemeManager();
 
 let intervallo = null;
 let inPausa = false;
@@ -44,13 +41,6 @@ highScoreEl.innerText = highScore;
 const CELL_SIZE = 20;
 const CELL_PADDING = 1;
 const CANVAS_SIZE = 400;
-
-/**
- * Gestore del tema dell'applicazione
- * @type {ThemeManager}
- * @const
- */
-const themeManager = new ThemeManager();
 
 // ============================================================================
 // SKIN UI
