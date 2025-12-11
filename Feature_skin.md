@@ -35,8 +35,9 @@ non sono stati modificati movimento, collisioni, punteggio o comportamento del g
 
 ## 📁 File Modificati
 
-js/main.js → aggiornato rendering serpente (colore RGB)
+js/main.js → aggiornato collegamento a funzione RGB su skin.js
 js/game.js → nessuna modifica funzionale
+js/skin.js → funzionamento base della skin RGB
 index.html → (eventuale) aggiunta selettore skin
 
 
