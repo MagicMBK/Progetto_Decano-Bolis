@@ -28,11 +28,8 @@
 ## 🚀 Quick Start
 
 ```bash
-# Clone e apri
-git clone https://github.com/tuousername/snake-game.git
-cd snake-game
-open index.html
-# Usare Live Server per il corretto funzionamento
+# open the pages site
+https://magicmbk.github.io/Progetto_Decano-Bolis/
 ```
 ---
 
