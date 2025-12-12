@@ -1,8 +1,0 @@
-{
-  "source": {
-    "include": ["./progetto/js/"]
-  },
-  "opts": {
-    "destination": "./docs/"
-  }
-}
