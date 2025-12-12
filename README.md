@@ -28,7 +28,7 @@
 ## 🚀 Quick Start
 
 
-# open the pages site
+### open the pages site
 [Snake.game](https://magicmbk.github.io/Progetto_Decano-Bolis/)
 
 
