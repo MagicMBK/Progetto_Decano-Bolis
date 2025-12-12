@@ -29,8 +29,7 @@
 
 ```bash
 # open the pages site
-https://magicmbk.github.io/Progetto_Decano-Bolis/
-```
+[Sanke.game](https://magicmbk.github.io/Progetto_Decano-Bolis/)
 ---
 
 ## 🎮 Controlli
