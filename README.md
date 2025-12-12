@@ -27,12 +27,13 @@
 
 ## 🚀 Quick Start
 
-```bash
+
 # open the pages site
-[Sanke.game](https://magicmbk.github.io/Progetto_Decano-Bolis/)
----
+[Snake.game](https://magicmbk.github.io/Progetto_Decano-Bolis/)
+
 
 ## 🎮 Controlli
+```bash
 
 | Azione | Tasti |
 |--------|-------|
