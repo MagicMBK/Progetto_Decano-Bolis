@@ -167,8 +167,6 @@ MIT License - vedi [LICENSE](LICENSE) per dettagli.
 
 <div align="center">
 
-**Fatto con ❤️ e molto ☕**
-
 ⭐ Lascia una star se ti piace il progetto!
 
 </div>
