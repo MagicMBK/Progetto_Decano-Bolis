@@ -38,7 +38,9 @@
     <div class="container-overview">
     
         
-            <div class="description">Modulo che gestisce la logica del gioco Snake.Contiene la classe principale SnakeGame che gestisce lo stato del gioco,il movimento del serpente, le collisioni e il punteggio.</div>
+            <div class="description">Modulo che gestisce la logica del gioco Snake.
+Contiene la classe SnakeGame che implementa tutte le meccaniche di gioco:
+movimento del serpente, collisioni, generazione cibo, punteggio.</div>
         
 
         
@@ -65,6 +67,9 @@
     <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2024-12-12</li></ul></dd>
     
 
     
@@ -134,12 +139,6 @@
     
 
     
-        <h3 class="subsection-title">Requires</h3>
-
-        <ul>
-            <li>module:Nessuna</li>
-        </ul>
-    
 
     
         <h3 class="subsection-title">Classes</h3>
@@ -165,13 +164,160 @@
 
         
                 
-<h4 class="name" id="~ConfigurazioneGioco">ConfigurazioneGioco</h4>
+<h4 class="name" id="~Direction">Direction</h4>
 
 
 
 
 <div class="description">
-    Oggetto di configurazione opzionale per personalizzare il gioco.
+    Rappresenta un vettore di direzione
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Componente orizzontale (-1, 0, 1)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Componente verticale (-1, 0, 1)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="~GameConfig">GameConfig</h4>
+
+
+
+
+<div class="description">
+    Configurazione iniziale del gioco
 </div>
 
 
@@ -250,7 +396,7 @@
                 </td>
             
 
-            <td class="description last">Numero di celle per lato della griglia quadrata</td>
+            <td class="description last">Dimensione della griglia NxN</td>
         </tr>
 
     
@@ -287,7 +433,7 @@
                 </td>
             
 
-            <td class="description last">Intervallo in millisecondi tra un aggiornamento e l'altro</td>
+            <td class="description last">Velocità iniziale in millisecondi</td>
         </tr>
 
     
@@ -326,7 +472,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line28">line 28</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -344,160 +490,13 @@
 
             
                 
-<h4 class="name" id="~Direzione">Direzione</h4>
+<h4 class="name" id="~GameUpdateResult">GameUpdateResult</h4>
 
 
 
 
 <div class="description">
-    Rappresenta una direzione di movimento.Valori validi: {x:1,y:0} destra, {x:-1,y:0} sinistra, {x:0,y:1} giù, {x:0,y:-1} su, {x:0,y:0} fermo
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Componente orizzontale (-1, 0, o 1)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Componente verticale (-1, 0, o 1)</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="~EsitoAggiornamento">EsitoAggiornamento</h4>
-
-
-
-
-<div class="description">
-    Oggetto restituito dal metodo aggiorna() per comunicare gli eventi del frame.
+    Risultato dell'aggiornamento del frame di gioco
 </div>
 
 
@@ -558,7 +557,7 @@
 
             
 
-            <td class="description last">Indica se il serpente è morto (collisione)</td>
+            <td class="description last">True se il serpente è morto</td>
         </tr>
 
     
@@ -581,7 +580,7 @@
 
             
 
-            <td class="description last">Indica se il serpente ha mangiato il cibo</td>
+            <td class="description last">True se il serpente ha mangiato cibo</td>
         </tr>
 
     
@@ -620,7 +619,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line35">line 35</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -638,13 +637,13 @@
 
             
                 
-<h4 class="name" id="~Posizione">Posizione</h4>
+<h4 class="name" id="~Position">Position</h4>
 
 
 
 
 <div class="description">
-    Rappresenta una posizione in una griglia bidimensionale.
+    Rappresenta una posizione 2D sulla griglia di gioco
 </div>
 
 
@@ -705,7 +704,7 @@
 
             
 
-            <td class="description last">Coordinata X nella griglia (0-based)</td>
+            <td class="description last">Coordinata orizzontale (0-19)</td>
         </tr>
 
     
@@ -728,7 +727,7 @@
 
             
 
-            <td class="description last">Coordinata Y nella griglia (0-based)</td>
+            <td class="description last">Coordinata verticale (0-19)</td>
         </tr>
 
     
@@ -797,13 +796,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li><li><a href="module-skin.html">skin</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li><li><a href="module-skin.SkinManager.html">SkinManager</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Wed Dec 10 2025 15:54:10 GMT+0100 (Ora standard dell’Europa centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Dec 12 2025 10:58:11 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

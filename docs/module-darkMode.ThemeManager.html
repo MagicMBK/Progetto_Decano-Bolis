@@ -31,7 +31,7 @@
         <h2><span class="attribs"><span class="type-signature"></span></span>
             <span class="ancestors"><a href="module-darkMode.html">darkMode</a>.</span>ThemeManager<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Classe che gestisce il tema dell'applicazione</div>
+            <div class="class-description">Gestore completo del sistema di temi light/dark</div>
         
     
 </header>
@@ -54,7 +54,9 @@
 
 
 <div class="description">
-    Crea una nuova istanza del ThemeManager
+    Crea una nuova istanza del ThemeManager.
+All'istanziazione carica automaticamente la preferenza salvata,
+crea il pulsante toggle nel DOM, e applica il tema corrente.
 </div>
 
 
@@ -65,6 +67,84 @@
 
 
 
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isDark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indica se il tema dark è attualmente attivo</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>toggleButton</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLButtonElement</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Riferimento al pulsante toggle</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -98,7 +178,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="darkMode.js.html">darkMode.js</a>, <a href="darkMode.js.html#line20">line 20</a>
+        <a href="darkMode.js.html">darkMode.js</a>, <a href="darkMode.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -125,6 +205,18 @@
 
 
 
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Inizializzazione automatica all'avvio del gioco
+const themeManager = new ThemeManager();
+// Carica automaticamente la preferenza salvata e crea il pulsante</code></pre>
+
+    <pre class="prettyprint"><code>// Toggle programmatico del tema
+const themeManager = new ThemeManager();
+themeManager.toggle(); // Passa da light a dark (o viceversa)
+console.log(themeManager.getCurrentTheme()); // "dark" o "light"</code></pre>
 
 
 
@@ -162,7 +254,8 @@
 
 
 <div class="description">
-    Restituisce il tema corrente
+    Restituisce il tema corrente come stringa.
+Utile per debug, logging, o sincronizzazione UI.
 </div>
 
 
@@ -206,7 +299,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="darkMode.js.html">darkMode.js</a>, <a href="darkMode.js.html#line126">line 126</a>
+        <a href="darkMode.js.html">darkMode.js</a>, <a href="darkMode.js.html#line271">line 271</a>
     </li></ul></dd>
     
 
@@ -235,7 +328,7 @@
 
         
 <div class="param-desc">
-    'dark' o 'light'
+    'dark' se dark mode attiva, 'light' altrimenti
 </div>
 
 
@@ -257,6 +350,16 @@
 
 
 
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>console.log("Tema attuale:", themeManager.getCurrentTheme());
+// Output: "Tema attuale: dark" oppure "Tema attuale: light"</code></pre>
+
+    <pre class="prettyprint"><code>// Sincronizza con un menu dropdown
+const dropdown = document.querySelector('#theme-select');
+dropdown.value = themeManager.getCurrentTheme();</code></pre>
+
+
 
         
             
@@ -272,7 +375,14 @@
 
 
 <div class="description">
-    Alterna tra tema chiaro e scuro
+    Alterna tra tema chiaro e scuro.
+Questa è la funzione principale chiamata quando l'utente
+clicca il pulsante toggle.
+
+Sequenza operazioni:
+1. Inverte lo stato di isDark
+2. Salva la nuova preferenza in localStorage
+3. Applica il nuovo tema al documento
 </div>
 
 
@@ -316,7 +426,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="darkMode.js.html">darkMode.js</a>, <a href="darkMode.js.html#line115">line 115</a>
+        <a href="darkMode.js.html">darkMode.js</a>, <a href="darkMode.js.html#line243">line 243</a>
     </li></ul></dd>
     
 
@@ -330,6 +440,11 @@
 
 
 
+
+<h5>Fires:</h5>
+<ul>
+    <li>ThemeManager#themeChanged - Potrebbe emettere evento custom (future impl.event:)</li>
+</ul>
 
 
 
@@ -363,9 +478,18 @@
 
 
 
-    <h5>Example</h5>
+    <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>const themeManager = new ThemeManager();themeManager.toggle(); // Passa da light a dark o viceversa</code></pre>
+    <pre class="prettyprint"><code>// Click sul pulsante
+themeManager.toggle(); 
+// Light -> Dark o Dark -> Light</code></pre>
+
+    <pre class="prettyprint"><code>// Toggle programmatico (es. da menu settings)
+if (userPreference === 'dark') {
+  if (!themeManager.isDark) {
+    themeManager.toggle();
+  }
+}</code></pre>
 
 
 
@@ -385,13 +509,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li><li><a href="module-skin.html">skin</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li><li><a href="module-skin.SkinManager.html">SkinManager</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Wed Dec 10 2025 15:54:10 GMT+0100 (Ora standard dell’Europa centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Dec 12 2025 10:58:11 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

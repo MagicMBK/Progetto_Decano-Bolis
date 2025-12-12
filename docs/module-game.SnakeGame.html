@@ -31,7 +31,7 @@
         <h2><span class="attribs"><span class="type-signature"></span></span>
             <span class="ancestors"><a href="module-game.html">game</a>.</span>SnakeGame<span class="signature">(config<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Classe principale che gestisce tutta la logica del gioco Snake.Responsabilità:- Gestione dello stato del gioco (serpente, cibo, punteggio)- Validazione e applicazione dei movimenti- Rilevamento delle collisioni- Generazione casuale del cibo- Calcolo del punteggio</div>
+            <div class="class-description">Implementa tutte le meccaniche core del gioco Snake</div>
         
     
 </header>
@@ -54,7 +54,7 @@
 
 
 <div class="description">
-    Il costruttore inizializza il gioco con i parametri forniti o con i valori predefiniti.Chiama automaticamente il metodo reset() per impostare lo stato iniziale.
+    Crea una nuova istanza del gioco Snake
 </div>
 
 
@@ -100,7 +100,7 @@
             <td class="type">
             
                 
-<span class="param-type">ConfigurazioneGioco</span>
+<span class="param-type">GameConfig</span>
 
 
             
@@ -126,11 +126,23 @@
                 </td>
             
 
-            <td class="description last">Oggetto di configurazione opzionale
-                <h6>Properties</h6>
-                
+            <td class="description last">Configurazione opzionale del gioco</td>
+        </tr>
 
-<table class="params">
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
     <thead>
     <tr>
         
@@ -140,11 +152,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -169,23 +177,7 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
 
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    20
-                
-                </td>
             
 
             <td class="description last">Dimensione della griglia (NxN celle)</td>
@@ -208,40 +200,153 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    150
-                
-                </td>
-            
 
-            <td class="description last">Velocità iniziale in ms tra gli aggiornamenti</td>
+            <td class="description last">Velocità iniziale del gioco in ms</td>
         </tr>
 
     
-    </tbody>
-</table>
 
+        <tr>
+            
+                <td class="name"><code>serpente</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Position></span>
+
+
+            
             </td>
+
+            
+
+            
+
+            <td class="description last">Array di posizioni che formano il serpente</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>direzione</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Direction</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Direzione corrente del movimento</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>punteggio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Punteggio attuale del giocatore</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>velocita</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Velocità corrente del gioco</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inCorso</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Flag che indica se la partita è attiva</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cibo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Position</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Posizione corrente del cibo</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -275,7 +380,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line71">line 71</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -306,9 +411,16 @@
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Creare un gioco con configurazione predefinitaconst gioco = new SnakeGame();</code></pre>
+    <pre class="prettyprint"><code>// Creazione di una nuova partita con configurazione personalizzata
+const game = new SnakeGame({
+  dimensioneGriglia: 30,
+  velocitaIniziale: 100
+});</code></pre>
 
-    <pre class="prettyprint"><code>// Creare un gioco con configurazione personalizzataconst gioco = new SnakeGame({  dimensioneGriglia: 30,  velocitaIniziale: 100});// Impostare direzione e aggiornaregioco.impostaDirezione({ x: 1, y: 0 });const risultato = gioco.aggiorna();if (risultato.morto) {  console.log("Game Over!");}</code></pre>
+    <pre class="prettyprint"><code>// Creazione con valori di default
+const game = new SnakeGame();
+game.impostaDirezione({ x: 1, y: 0 }); // Muove a destra
+const result = game.aggiorna(); // Avanza di un frame</code></pre>
 
 
 
@@ -332,13 +444,13 @@
 
         
             
-<h4 class="name" id="cibo"><span class="type-signature"></span>cibo<span class="type-signature"> :Posizione</span></h4>
+<h4 class="name" id="cibo"><span class="type-signature"></span>cibo<span class="type-signature"> :Position</span></h4>
 
 
 
 
 <div class="description">
-    Viene aggiornata ogni volta che il serpente mangia il cibo.
+    Posizione corrente del cibo sulla griglia
 </div>
 
 
@@ -347,7 +459,7 @@
     <ul>
         <li>
             
-<span class="param-type">Posizione</span>
+<span class="param-type">Position</span>
 
 
         </li>
@@ -386,7 +498,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line254">line 254</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line196">line 196</a>
     </li></ul></dd>
     
 
@@ -404,13 +516,14 @@
 
         
             
-<h4 class="name" id="dimensioneGriglia"><span class="type-signature"></span>dimensioneGriglia<span class="type-signature"> :number</span></h4>
+<h4 class="name" id="direzione"><span class="type-signature"></span>direzione<span class="type-signature"> :Direction</span></h4>
 
 
 
 
 <div class="description">
-    Numero di celle per lato della griglia di gioco (griglia quadrata NxN).
+    Direzione corrente del movimento.
+(0,0) = fermo, (1,0) = destra, (-1,0) = sinistra, ecc.
 </div>
 
 
@@ -419,7 +532,7 @@
     <ul>
         <li>
             
-<span class="param-type">number</span>
+<span class="param-type">Direction</span>
 
 
         </li>
@@ -454,93 +567,11 @@
     
 
     
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>20</li>
-        </ul></dd>
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line90">line 90</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="direzione"><span class="type-signature"></span>direzione<span class="type-signature"> :Direzione</span></h4>
-
-
-
-
-<div class="description">
-    - {x:0, y:0} = fermo (stato iniziale)- {x:1, y:0} = destra- {x:-1, y:0} = sinistra- {x:0, y:1} = giù- {x:0, y:-1} = su
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Direzione</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>{x: 0, y: 0}</li>
-        </ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line150">line 150</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -564,7 +595,7 @@
 
 
 <div class="description">
-    Indica se il gioco è attualmente in corso.Diventa true quando il giocatore fa la prima mossa.Diventa false in caso di collisione (Game Over).
+    Flag che indica se il gioco è in corso
 </div>
 
 
@@ -608,16 +639,11 @@
     
 
     
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>false</li>
-        </ul></dd>
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line177">line 177</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line127">line 127</a>
     </li></ul></dd>
     
 
@@ -641,7 +667,7 @@
 
 
 <div class="description">
-    Punteggio attuale del giocatore.Incrementa di 1 ogni volta che il serpente mangia il cibo.
+    Punteggio del giocatore (numero di cibi mangiati)
 </div>
 
 
@@ -685,16 +711,11 @@
     
 
     
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>0</li>
-        </ul></dd>
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line159">line 159</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line115">line 115</a>
     </li></ul></dd>
     
 
@@ -712,13 +733,14 @@
 
         
             
-<h4 class="name" id="serpente"><span class="type-signature"></span>serpente<span class="type-signature"> :Array.&lt;Posizione></span></h4>
+<h4 class="name" id="serpente"><span class="type-signature"></span>serpente<span class="type-signature"> :Array.&lt;Position></span></h4>
 
 
 
 
 <div class="description">
-    La lunghezza dell'array determina la lunghezza del serpente.Il serpente cresce quando mangia il cibo (non viene rimossa la coda).
+    Array che rappresenta tutti i segmenti del serpente.
+Il primo elemento è sempre la testa.
 </div>
 
 
@@ -727,7 +749,7 @@
     <ul>
         <li>
             
-<span class="param-type">Array.&lt;Posizione></span>
+<span class="param-type">Array.&lt;Position></span>
 
 
         </li>
@@ -766,7 +788,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line136">line 136</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -790,7 +812,7 @@
 
 
 <div class="description">
-    Velocità corrente del gioco in millisecondi.Può essere diminuita durante il gioco per aumentare la difficoltà.
+    Velocità corrente del gioco in millisecondi
 </div>
 
 
@@ -838,84 +860,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line167">line 167</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="velocitaIniziale"><span class="type-signature"></span>velocitaIniziale<span class="type-signature"> :number</span></h4>
-
-
-
-
-<div class="description">
-    Intervallo iniziale in millisecondi tra un aggiornamento e l'altro.Può essere modificato durante il gioco per aumentare la difficoltà.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>150</li>
-        </ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line98">line 98</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -943,7 +888,7 @@
     
 
     
-    <h4 class="name" id="aggiorna"><span class="type-signature"></span>aggiorna<span class="signature">()</span><span class="type-signature"> &rarr; {EsitoAggiornamento}</span></h4>
+    <h4 class="name" id="aggiorna"><span class="type-signature"></span>aggiorna<span class="signature">()</span><span class="type-signature"> &rarr; {GameUpdateResult}</span></h4>
     
 
     
@@ -951,7 +896,14 @@
 
 
 <div class="description">
-    Questa è la funzione principale del game loop. Esegue le seguenti operazioni:1. Se il gioco non è in corso, ritorna immediatamente senza fare nulla2. Calcola la nuova posizione della testa in base alla direzione corrente3. Controlla se c'è una collisione con:   - I bordi della griglia   - Il corpo del serpente stesso4. Se c'è collisione, ferma il gioco e ritorna {morto: true, mangiato: false}5. Aggiunge la nuova testa al serpente6. Controlla se la testa è sulla posizione del cibo:   - Se sì: incrementa il punteggio, genera nuovo cibo, ritorna {morto: false, mangiato: true}   - Se no: rimuove la coda (il serpente si muove ma non cresce), ritorna {morto: false, mangiato: false}
+    Aggiorna lo stato del gioco di un frame.
+Questa è la funzione chiamata ad ogni tick del game loop.
+
+Gestisce:
+- Movimento del serpente nella direzione corrente
+- Rilevamento collisioni (bordi e auto-collisione)
+- Consumo del cibo e crescita del serpente
+- Aggiornamento del punteggio
 </div>
 
 
@@ -995,7 +947,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line296">line 296</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line227">line 227</a>
     </li></ul></dd>
     
 
@@ -1024,7 +976,7 @@
 
         
 <div class="param-desc">
-    Oggetto che descrive l'esito dell'aggiornamento
+    Oggetto con stato dell'aggiornamento
 </div>
 
 
@@ -1035,7 +987,7 @@
     </dt>
     <dd>
         
-<span class="param-type">EsitoAggiornamento</span>
+<span class="param-type">GameUpdateResult</span>
 
 
     </dd>
@@ -1048,7 +1000,17 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Esempio di utilizzo nel game loopsetInterval(() => {  const esito = gioco.aggiorna();    if (esito.morto) {    console.log("Game Over!");    // Fermare il timer, mostrare schermata Game Over  }    if (esito.mangiato) {    console.log("Cibo mangiato! Punteggio:", gioco.punteggio);    // Riprodurre suono, aumentare velocità, ecc.  }    ridisegnaGioco();}, gioco.velocita);</code></pre>
+    <pre class="prettyprint"><code>// In un game loop
+setInterval(() => {
+  const result = game.aggiorna();
+  if (result.morto) {
+    console.log("Game Over!");
+    clearInterval(this);
+  }
+  if (result.mangiato) {
+    console.log("Yum! Punteggio:", game.punteggio);
+  }
+}, game.velocita);</code></pre>
 
 
 
@@ -1066,7 +1028,10 @@
 
 
 <div class="description">
-    Questa funzione implementa la logica di prevenzione dell'inversione a 180°:il serpente non può invertire completamente la direzione in un solo frame(es. se va a destra non può andare immediatamente a sinistra).Il gioco viene avviato (inCorso = true) quando viene impostata la primadirezione diversa da {x:0, y:0}.
+    Imposta la nuova direzione del serpente.
+Previene movimenti opposti alla direzione corrente (es. da destra a sinistra)
+che causerebbero un'immediata collisione con se stesso.
+Avvia il gioco se non è già iniziato.
 </div>
 
 
@@ -1108,7 +1073,10 @@
             <td class="type">
             
                 
-<span class="param-type">Direzione</span>
+<span class="param-type">Direction</span>
+|
+
+<span class="param-type">null</span>
 
 
             
@@ -1118,7 +1086,7 @@
 
             
 
-            <td class="description last">La nuova direzione desiderata</td>
+            <td class="description last">Oggetto direzione con proprietà x e y</td>
         </tr>
 
     
@@ -1159,7 +1127,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line207">line 207</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line151">line 151</a>
     </li></ul></dd>
     
 
@@ -1208,9 +1176,11 @@
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Tentativo di movimento validogioco.direzione = { x: 1, y: 0 }; // destragioco.impostaDirezione({ x: 0, y: 1 }); // giù - OK</code></pre>
+    <pre class="prettyprint"><code>// Muove il serpente verso destra
+game.impostaDirezione({ x: 1, y: 0 });</code></pre>
 
-    <pre class="prettyprint"><code>// Tentativo di inversione (ignorato)gioco.direzione = { x: 1, y: 0 }; // destragioco.impostaDirezione({ x: -1, y: 0 }); // sinistra - IGNORATO</code></pre>
+    <pre class="prettyprint"><code>// Tentativo di inversione (ignorato se il serpente va a destra)
+game.impostaDirezione({ x: -1, y: 0 }); // Non viene applicato</code></pre>
 
 
 
@@ -1220,7 +1190,7 @@
     
 
     
-    <h4 class="name" id="posizionaCibo"><span class="type-signature"></span>posizionaCibo<span class="signature">()</span><span class="type-signature"> &rarr; {Posizione}</span></h4>
+    <h4 class="name" id="posizionaCibo"><span class="type-signature"></span>posizionaCibo<span class="signature">()</span><span class="type-signature"> &rarr; {Position}</span></h4>
     
 
     
@@ -1228,7 +1198,9 @@
 
 
 <div class="description">
-    Questa funzione usa un ciclo do-while per generare posizioni casuali finchénon ne trova una che non sia occupata dal corpo del serpente.La posizione generata viene salvata nella proprietà this.cibo.
+    Genera una nuova posizione casuale per il cibo.
+Garantisce che il cibo non appaia sopra il serpente.
+Continua a generare posizioni finché non trova una cella vuota.
 </div>
 
 
@@ -1272,7 +1244,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line239">line 239</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -1312,7 +1284,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Posizione</span>
+<span class="param-type">Position</span>
 
 
     </dd>
@@ -1325,7 +1297,8 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Generare una nuova posizione per il ciboconst nuovaPosizione = gioco.posizionaCibo();console.log(`Cibo a x:${nuovaPosizione.x}, y:${nuovaPosizione.y}`);</code></pre>
+    <pre class="prettyprint"><code>const newFoodPos = game.posizionaCibo();
+console.log(`Cibo a: ${newFoodPos.x}, ${newFoodPos.y}`);</code></pre>
 
 
 
@@ -1343,7 +1316,9 @@
 
 
 <div class="description">
-    Questo metodo:- Posiziona il serpente al centro della griglia con lunghezza 1- Imposta la direzione a {x:0, y:0} (fermo)- Azzera il punteggio- Ripristina la velocità iniziale- Imposta inCorso a false (il gioco non è ancora iniziato)- Genera una nuova posizione per il cibo
+    Resetta il gioco allo stato iniziale.
+Posiziona il serpente al centro della griglia con lunghezza 1,
+azzera il punteggio, resetta la velocità e genera nuovo cibo.
 </div>
 
 
@@ -1387,7 +1362,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="game.js.html">game.js</a>, <a href="game.js.html#line124">line 124</a>
+        <a href="game.js.html">game.js</a>, <a href="game.js.html#line93">line 93</a>
     </li></ul></dd>
     
 
@@ -1436,7 +1411,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Resettare il gioco dopo un Game Overif (risultato.morto) {  gioco.reset();}</code></pre>
+    <pre class="prettyprint"><code>game.reset(); // Inizia nuova partita</code></pre>
 
 
 
@@ -1456,13 +1431,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-darkMode.html">darkMode</a></li><li><a href="module-game.html">game</a></li><li><a href="module-main.html">main</a></li><li><a href="module-skin.html">skin</a></li></ul><h3>Classes</h3><ul><li><a href="module-darkMode.ThemeManager.html">ThemeManager</a></li><li><a href="module-game.SnakeGame.html">SnakeGame</a></li><li><a href="module-skin.SkinManager.html">SkinManager</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Wed Dec 10 2025 15:54:10 GMT+0100 (Ora standard dell’Europa centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Dec 12 2025 10:58:11 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

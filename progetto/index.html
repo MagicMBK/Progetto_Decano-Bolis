@@ -11,7 +11,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         
-        body { background: linear-gradient(135deg, #fffef7 0%, #fef8e8 100%); }
+        /* Light mode background (default) */
+        body:not(.dark-mode) { 
+            background: linear-gradient(135deg, #fffef7 0%, #fef8e8 100%) !important; 
+            color: #1a1a1a !important;
+        }
+        
         canvas { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
         
         #scoreVal, #highScoreVal {
@@ -31,6 +36,12 @@
             font-family: 'Press Start 2P', cursive;
             font-size: 15px;
         }
+        
+        /* Fix testo in light mode */
+        body:not(.dark-mode) h1,
+        body:not(.dark-mode) p {
+            color: #1a1a1a !important;
+        }
     </style>
     
     <link rel="stylesheet" href="styles-skin.css">
@@ -40,7 +51,6 @@
 <body class="flex flex-col items-center justify-center min-h-screen body-skin-green">
     
     <h1 class="text-4xl mb-4 font-bold">🐍 Snake</h1>
-    <button id="themeToggle" class="theme-toggle">🌙</button>
     
     <!-- Punteggio -->
     <div class="mt-2 flex gap-4">

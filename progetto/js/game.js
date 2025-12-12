@@ -1,54 +1,247 @@
 /**
  * @fileoverview Modulo che gestisce la logica del gioco Snake.
+ * Contiene la classe SnakeGame che implementa tutte le meccaniche di gioco:
+ * movimento del serpente, collisioni, generazione cibo, punteggio.
+ * 
  * @module game
+ * @author Il tuo nome
  * @version 1.0.0
+ * @since 2024-12-12
  */
 
+/**
+ * Rappresenta una posizione 2D sulla griglia di gioco
+ * @typedef {Object} Position
+ * @property {number} x - Coordinata orizzontale (0-19)
+ * @property {number} y - Coordinata verticale (0-19)
+ */
+
+/**
+ * Rappresenta un vettore di direzione
+ * @typedef {Object} Direction
+ * @property {number} x - Componente orizzontale (-1, 0, 1)
+ * @property {number} y - Componente verticale (-1, 0, 1)
+ */
+
+/**
+ * Configurazione iniziale del gioco
+ * @typedef {Object} GameConfig
+ * @property {number} [dimensioneGriglia=20] - Dimensione della griglia NxN
+ * @property {number} [velocitaIniziale=150] - Velocità iniziale in millisecondi
+ */
+
+/**
+ * Risultato dell'aggiornamento del frame di gioco
+ * @typedef {Object} GameUpdateResult
+ * @property {boolean} morto - True se il serpente è morto
+ * @property {boolean} mangiato - True se il serpente ha mangiato cibo
+ */
+
+/**
+ * Classe principale che gestisce la logica del gioco Snake.
+ * Gestisce lo stato del serpente, il cibo, le collisioni e il punteggio.
+ * 
+ * @class
+ * @classdesc Implementa tutte le meccaniche core del gioco Snake
+ * 
+ * @example
+ * // Creazione di una nuova partita con configurazione personalizzata
+ * const game = new SnakeGame({
+ *   dimensioneGriglia: 30,
+ *   velocitaIniziale: 100
+ * });
+ * 
+ * @example
+ * // Creazione con valori di default
+ * const game = new SnakeGame();
+ * game.impostaDirezione({ x: 1, y: 0 }); // Muove a destra
+ * const result = game.aggiorna(); // Avanza di un frame
+ */
 export class SnakeGame {
+    /**
+     * Crea una nuova istanza del gioco Snake
+     * 
+     * @constructor
+     * @param {GameConfig} [config={}] - Configurazione opzionale del gioco
+     * 
+     * @property {number} dimensioneGriglia - Dimensione della griglia (NxN celle)
+     * @property {number} velocitaIniziale - Velocità iniziale del gioco in ms
+     * @property {Position[]} serpente - Array di posizioni che formano il serpente
+     * @property {Direction} direzione - Direzione corrente del movimento
+     * @property {number} punteggio - Punteggio attuale del giocatore
+     * @property {number} velocita - Velocità corrente del gioco
+     * @property {boolean} inCorso - Flag che indica se la partita è attiva
+     * @property {Position} cibo - Posizione corrente del cibo
+     */
     constructor(config = {}) {
         this.dimensioneGriglia = config.dimensioneGriglia || 20;
         this.velocitaIniziale = config.velocitaIniziale || 150;
         this.reset();
     }
 
+    /**
+     * Resetta il gioco allo stato iniziale.
+     * Posiziona il serpente al centro della griglia con lunghezza 1,
+     * azzera il punteggio, resetta la velocità e genera nuovo cibo.
+     * 
+     * @method
+     * @returns {void}
+     * 
+     * @example
+     * game.reset(); // Inizia nuova partita
+     */
     reset() {
+        // Posiziona il serpente al centro della griglia
         const centro = Math.floor(this.dimensioneGriglia / 2);
+        
+        /**
+         * Array che rappresenta tutti i segmenti del serpente.
+         * Il primo elemento è sempre la testa.
+         * @type {Position[]}
+         */
         this.serpente = [{ x: centro, y: centro }];
+        
+        /**
+         * Direzione corrente del movimento.
+         * (0,0) = fermo, (1,0) = destra, (-1,0) = sinistra, ecc.
+         * @type {Direction}
+         */
         this.direzione = { x: 0, y: 0 };
+        
+        /**
+         * Punteggio del giocatore (numero di cibi mangiati)
+         * @type {number}
+         */
         this.punteggio = 0;
+        
+        /**
+         * Velocità corrente del gioco in millisecondi
+         * @type {number}
+         */
         this.velocita = this.velocitaIniziale;
+        
+        /**
+         * Flag che indica se il gioco è in corso
+         * @type {boolean}
+         */
         this.inCorso = false;
+        
+        // Genera il primo cibo
         this.posizionaCibo();
     }
 
+    /**
+     * Imposta la nuova direzione del serpente.
+     * Previene movimenti opposti alla direzione corrente (es. da destra a sinistra)
+     * che causerebbero un'immediata collisione con se stesso.
+     * Avvia il gioco se non è già iniziato.
+     * 
+     * @method
+     * @param {Direction|null} dir - Oggetto direzione con proprietà x e y
+     * @returns {void}
+     * 
+     * @example
+     * // Muove il serpente verso destra
+     * game.impostaDirezione({ x: 1, y: 0 });
+     * 
+     * @example
+     * // Tentativo di inversione (ignorato se il serpente va a destra)
+     * game.impostaDirezione({ x: -1, y: 0 }); // Non viene applicato
+     */
     impostaDirezione(dir) {
+        // Validazione input
         if (!dir) return;
+        
+        // Previene inversione orizzontale (destra->sinistra o viceversa)
         if (this.direzione.x !== 0 && dir.x === -this.direzione.x) return;
+        
+        // Previene inversione verticale (su->giù o viceversa)
         if (this.direzione.y !== 0 && dir.y === -this.direzione.y) return;
+        
+        // Applica la nuova direzione
         this.direzione = dir;
+        
+        // Avvia il gioco se è stata data una direzione valida
         if (dir.x !== 0 || dir.y !== 0) this.inCorso = true;
     }
 
+    /**
+     * Genera una nuova posizione casuale per il cibo.
+     * Garantisce che il cibo non appaia sopra il serpente.
+     * Continua a generare posizioni finché non trova una cella vuota.
+     * 
+     * @method
+     * @returns {Position} La nuova posizione del cibo
+     * 
+     * @example
+     * const newFoodPos = game.posizionaCibo();
+     * console.log(`Cibo a: ${newFoodPos.x}, ${newFoodPos.y}`);
+     */
     posizionaCibo() {
         let pos;
+        
+        // Loop finché non trova una posizione valida
         do {
             pos = {
                 x: Math.floor(Math.random() * this.dimensioneGriglia),
                 y: Math.floor(Math.random() * this.dimensioneGriglia),
             };
+            // Verifica che non sia sopra il serpente
         } while (this.serpente.some(s => s.x === pos.x && s.y === pos.y));
+        
+        /**
+         * Posizione corrente del cibo sulla griglia
+         * @type {Position}
+         */
         this.cibo = pos;
+        
         return pos;
     }
 
+    /**
+     * Aggiorna lo stato del gioco di un frame.
+     * Questa è la funzione chiamata ad ogni tick del game loop.
+     * 
+     * Gestisce:
+     * - Movimento del serpente nella direzione corrente
+     * - Rilevamento collisioni (bordi e auto-collisione)
+     * - Consumo del cibo e crescita del serpente
+     * - Aggiornamento del punteggio
+     * 
+     * @method
+     * @returns {GameUpdateResult} Oggetto con stato dell'aggiornamento
+     * 
+     * @example
+     * // In un game loop
+     * setInterval(() => {
+     *   const result = game.aggiorna();
+     *   if (result.morto) {
+     *     console.log("Game Over!");
+     *     clearInterval(this);
+     *   }
+     *   if (result.mangiato) {
+     *     console.log("Yum! Punteggio:", game.punteggio);
+     *   }
+     * }, game.velocita);
+     */
     aggiorna() {
+        // Non fare nulla se il gioco non è attivo
         if (!this.inCorso) return { morto: false, mangiato: false };
 
+        // Calcola la nuova posizione della testa
         const testa = {
             x: this.serpente[0].x + this.direzione.x,
             y: this.serpente[0].y + this.direzione.y
         };
 
+        /**
+         * Verifica collisioni con:
+         * 1. Bordo sinistro (x < 0)
+         * 2. Bordo destro (x >= dimensioneGriglia)
+         * 3. Bordo superiore (y < 0)
+         * 4. Bordo inferiore (y >= dimensioneGriglia)
+         * 5. Corpo del serpente
+         */
         const collisione =
             testa.x < 0 ||
             testa.x >= this.dimensioneGriglia ||
@@ -56,20 +249,30 @@ export class SnakeGame {
             testa.y >= this.dimensioneGriglia ||
             this.serpente.some(s => s.x === testa.x && s.y === testa.y);
 
+        // Gestione game over
         if (collisione) {
             this.inCorso = false;
             return { morto: true, mangiato: false };
         }
 
+        // Aggiungi la nuova testa all'inizio del serpente
         this.serpente.unshift(testa);
 
+        // Verifica se il serpente ha mangiato il cibo
         if (testa.x === this.cibo.x && testa.y === this.cibo.y) {
+            // Incrementa punteggio
             this.punteggio++;
+            
+            // Genera nuovo cibo
             this.posizionaCibo();
+            
+            // Non rimuovere la coda (il serpente cresce)
             return { morto: false, mangiato: true };
         }
 
+        // Rimuovi la coda (movimento normale senza crescita)
         this.serpente.pop();
+        
         return { morto: false, mangiato: false };
     }
 }
