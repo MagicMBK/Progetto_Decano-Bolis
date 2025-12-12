@@ -2,8 +2,8 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![JavaScript](https://img.shields.io/badge/javascript-ES6+-yellow.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)  
+![JavaScript](https://img.shields.io/badge/javascript-ES6+-yellow.svg)  
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 **Il classico Snake con Dark Mode e Skin RGB** 🎮
@@ -16,31 +16,31 @@
 
 ## ✨ Features
 
-- 🎨 **3 Skin RGB** - Scegli tra Green, Red e Blue
-- 🌓 **Dark Mode** - Toggle light/dark con persistenza
-- 💾 **LocalStorage** - Salva preferenze e high score
-- ⚡ **Performance** - 60 FPS smooth gameplay
-- 🎮 **Controlli Premium** - Frecce + WASD + Pausa (SPAZIO)
-- 📊 **High Score** - Batti il tuo record personale
+- 🎨 **3 Skin RGB** - Scegli tra Green, Red e Blue  
+- 🌓 **Dark Mode** - Toggle light/dark con persistenza  
+- 💾 **LocalStorage** - Salva preferenze e high score  
+- ⚡ **Performance** - 60 FPS smooth gameplay  
+- 🎮 **Controlli Premium** - Frecce + WASD + Pausa (SPAZIO)  
+- 📊 **High Score** - Batti il tuo record personale  
 
 ---
 
 ## 🚀 Quick Start
 
+Apri il sito: [Snake.game](https://magicmbk.github.io/Progetto_Decano-Bolis/)
 
-### open the pages site
-[Snake.game](https://magicmbk.github.io/Progetto_Decano-Bolis/)
-
+---
 
 ## 🎮 Controlli
-```bash
 
-| Azione | Tasti |
-|--------|-------|
-| Movimento | `↑ ↓ ← →` o `WASD` |
-| Pausa | `SPAZIO` |
-| Dark Mode | Click 🌙 |
-| Cambia Skin | Click sui cubi colorati |
+| Azione      | Tasti               |
+|------------|-------------------|
+| Movimento  | `↑ ↓ ← →` o `WASD` |
+| Pausa      | `SPAZIO`           |
+| Dark Mode  | Click 🌙           |
+| Cambia Skin| Click sui cubi colorati |
+
+> **Nota:** Cambia skin **solo quando il gioco è fermo** - vengono salvate automaticamente!
 
 ---
 
@@ -68,14 +68,12 @@ snake-game/
 🔵 Blue Cobra   → #3b82f6
 ```
 
-Cambia skin **solo quando il gioco è fermo** - vengono salvate automaticamente!
-
 ---
 
 ## 🌓 Dark Mode
 
-**Light Mode**: Background crema/panna, perfetto per il giorno  
-**Dark Mode**: Background blu navy, ideale per la notte
+- **Light Mode:** Background crema/panna, perfetto per il giorno  
+- **Dark Mode:** Background blu navy, ideale per la notte  
 
 Toggle con il pulsante 🌙/☀️ in alto a destra. La preferenza è **salvata** tra sessioni.
 
@@ -83,20 +81,20 @@ Toggle con il pulsante 🌙/☀️ in alto a destra. La preferenza è **salvata*
 
 ## 🛠️ Tecnologie
 
-- **HTML5 Canvas** - Rendering grafico
-- **JavaScript ES6+** - Logica modulare
-- **CSS3 Variables** - Theming dinamico
-- **LocalStorage API** - Persistenza dati
-- **TailwindCSS** - Utility classes
+- **HTML5 Canvas** - Rendering grafico  
+- **JavaScript ES6+** - Logica modulare  
+- **CSS3 Variables** - Theming dinamico  
+- **LocalStorage API** - Persistenza dati  
+- **TailwindCSS** - Utility classes  
 
 ---
 
 ## ⚡ Performance
 
-- **60 FPS** costanti
-- **< 100ms** tempo di caricamento
-- **~25KB** dimensione totale
-- **100%** compatibilità browser moderni
+- **60 FPS** costanti  
+- **< 100ms** tempo di caricamento  
+- **~25KB** dimensione totale  
+- **100%** compatibilità browser moderni  
 
 ---
 
@@ -104,10 +102,10 @@ Toggle con il pulsante 🌙/☀️ in alto a destra. La preferenza è **salvata*
 
 | Browser | Versione | Status |
 |---------|----------|--------|
-| Chrome | 90+ | ✅ |
-| Firefox | 88+ | ✅ |
-| Safari | 14+ | ✅ |
-| Edge | 90+ | ✅ |
+| Chrome  | 90+      | ✅     |
+| Firefox | 88+      | ✅     |
+| Safari  | 14+      | ✅     |
+| Edge    | 90+      | ✅     |
 
 ---
 
@@ -130,23 +128,23 @@ Genera la documentazione con: `npm run docs` (opzionale)
 
 ## 🤝 Contribuire
 
-1. Fork il progetto
-2. Crea il tuo branch (`git checkout -b feature/CoolFeature`)
-3. Commit (`git commit -m 'Add CoolFeature'`)
-4. Push (`git push origin feature/CoolFeature`)
+1. Fork il progetto  
+2. Crea il tuo branch (`git checkout -b feature/CoolFeature`)  
+3. Commit (`git commit -m 'Add CoolFeature'`)  
+4. Push (`git push origin feature/CoolFeature`)  
 
 ---
 
 ## 📜 Changelog
 
-**v2.0.0** (2024-12-12)
-- ✨ Sistema Dark Mode
-- ✨ Skin RGB (3 temi)
-- 🎨 Grafica migliorata con effetti luminosi
-- 📚 Documentazione JSDoc completa
+**v2.0.0** (2024-12-12)  
+- ✨ Sistema Dark Mode  
+- ✨ Skin RGB (3 temi)  
+- 🎨 Grafica migliorata con effetti luminosi  
+- 📚 Documentazione JSDoc completa  
 
-**v1.0.0** (2024-11-XX)
-- 🎮 Release iniziale
+**v1.0.0** (2024-11-XX)  
+- 🎮 Release iniziale  
 
 ---
 
@@ -158,12 +156,13 @@ MIT License - vedi [LICENSE](LICENSE) per dettagli.
 
 ## 👤 Autore
 
-**[Decano Niccolo]**
+**[Decano Niccolo]**  
 **[Bolis Lorenzo]**
+
 ---
 
 <div align="center">
 
-⭐ Lascia una star se ti piace il progetto!
+⭐ Lascia una star se ti piace il progetto!  
 
 </div>
